@@ -1,2 +1,2 @@
-# this-is-not-a-website
-Trust me bro
+# this may or may not be a website
+idk man this repo kinda lackin
