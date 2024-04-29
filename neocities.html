@@ -1,0 +1,240 @@
+
+	
+<!DOCTYPE HTML>
+<head>
+<meta charset="utf-8" />
+ 
+<!--
+ 
+    /// "Crush" template made by awhe @ https://awhe.neocities.org/
+ 
+    /// NOTE: Feel free to delete the above credits included in the code. I do not require credit, and I encourage copying from me as much as you'd like. As always: The internet is made for sharing, and so I'm happy to be able to share this with you!
+ 
+    /// Originally I was wanting to learn how to use grids in HTML, and then I wanted to make a new gamelog page. And then I thought: welp, might as well share this one too!
+ 
+    /// I'm bad at spelling. If you see any spelling errors, no you don't! (I'm sorry, even after checking, I still usually miss something.)
+ 
+    ==============================================================
+ 
+                    -USEFUL INFO-
+ 
+    // margin: refers to the space AROUND an element.
+    // padding: refers to the space INSIDE an element.
+    // color: refers to TEXT COLOR.
+    // background: refers to the BACKGROUND COLOR of an element.
+    // favicon: refers to the tiny image that shows up on your website tab at the top.
+    // body: refers to the main structure of the site. think of the plain white screen before adding all your code, that's the body. 
+ 
+    // https://www.w3schools.com/ (This site has all the help you need if you require more assistance.)
+    // https://codepen.io/ (This site allows live previews of your code, which can be helpful when you're changing parts and still learning.)
+    // https://awhe.neocities.org/links (Shameless self plug, but I've included many many links here regarding HTML (among other things!) that may prove useful.)
+    // https://blog.hubspot.com/website/web-safe-html-css-fonts (Displays "web safe fonts" which are fonts that'll adapt to any browser on any device.)
+    // https://www.w3schools.com/tags/ref_colornames.asp (Shows you the names of colors supported by all browsers!)
+ 
+    ==============================================================
+ 
+    /// Just a small reminder that:
+        - You can and you should copy from me if you'd like. I don't care. My url is: https://awhe.neocities.org/
+        - Credit is always optional, whatever you feel like.
+        - For a cleaner look, I recommend removing my text additions whenever you feel comfortable to.
+        - I recommend editing on a live preview, so you can see the immediate effects of any changes you make.
+        - Have fun! Add, change, edit, etc, whatever you want! The net is yours.
+ 
+-->
+ 
+<title>DUDE</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/"> 
+</head>
+
+<style>
+body{
+    margin: 0 auto;
+    font-family: ms gothic, monospace;
+    text-align: center;
+    background-image: url('https://files.catbox.moe/wpys0v.jpg');
+    text-align: center;
+}
+
+.container {  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 15px;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  grid-template-areas:
+    "side1 middle side-2"
+    "side1 middle side-2"
+    "side1 middle side-2";
+}
+
+.side1 { 
+    grid-area: side1;
+    background:white;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    min-height: 65vh;
+
+ }
+
+.middle { 
+    grid-area: middle;
+    background:white;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    min-height: 65vh;
+
+ }
+
+.side-2 { 
+    grid-area: side-2; 
+    background:white;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    min-height: 65vh;
+
+}
+
+#cont {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    max-height: 20%;
+}
+
+h3 {
+    background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0px 50px 0px 50px;
+}
+
+ul {
+    list-style-type: none;
+    display: block;
+    margin: 0;
+    padding:5px 5px 5px 5px;
+}
+
+hr{
+    border-top: 3px double red;
+}
+
+#hover a { 
+    display: inline-block; 
+    transition: .2s ease; 
+} 
+
+#hover a:hover { 
+    transform: translateY(-20%); 
+} 
+
+a{
+    color:red;
+}
+
+a:hover{
+    color:rgb(25, 0, 255);
+}
+
+.Marquee {
+    padding: 15px;
+    max-width: 100%
+}
+
+#float {
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000, 0 0;
+    font-size:2em;
+    font-weight:bold; 
+    color: #fff;
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }    
+}
+
+</style>
+
+<body>
+    <div id="cont">
+        <div id="float"><h1>py
+       </h1></div>
+    <div class="container">
+        <div class="side1"><h3>HELP</h3>
+            <hr>
+        <ul>
+            <li id="hover"><img src="/"> <a href="/">LINK 1</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 2</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 3</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 4</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 5</a></li>
+        </ul>
+        <hr>
+        <img src="https://hoarding.neocities.org/img/otherpix/med2.gif">
+        <hr>
+        <ul>
+            <li id="hover"><img src="/"> <a href="/">LINK 6</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 7</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 8</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 9</a></li>
+            <li id="hover"><img src="/"> <a href="/">LINK 10</a></li>
+        </ul>
+        <hr>
+        <img src="https://hoarding.neocities.org/img/otherpix/s98.png">
+    </div>
+
+    <div class="middle"><h3>_____________ I LOVE NEOCITIES!!!!!</h3>
+        <hr>
+        <img src="https://hoarding.neocities.org/img/otherpix/m23.gif">
+        <br>
+        <br>
+        yeah this is the neocities version of my "wesbite"
+        <br>
+        <br>
+      and yeah
+        <br>
+        <br>
+        the possibilties are endless on what you can do with wesbites,,,<a href="neocities/inst.ogg" target="_blank">,</a>
+        <hr>
+        <table>
+            <tbody>
+                <tr>
+                    <td style="padding-right:40px;"><img src="https://hoarding.neocities.org/img/otherpix/s97.gif"></td>
+                    <td>my nickname is python and i like rhythm games and other stuff and im trying to start trying to learn html (im using a template fo dis)   I wanna try to learn stuff so i dont act stupid infront of people!! >:3
+                    <br><br>
+                      <i>fancy text</i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="side-2"><h3>limited</h3>
+        <hr>
+        <marquee class="Marquee" direction="up" scrollamount="7" behavior="scroll">
+            <center>
+            <img src="https://hoarding.neocities.org/img/stamps/more/stamp5.png">
+            <img src="https://hoarding.neocities.org/img/stamps/dau0txn-75af8827-03a6-414b-97f6-0c030442042e.gif">
+            <img src="https://hoarding.neocities.org/img/stamps/keep_on_gaying_on_stamp.png">
+            <img src="https://hoarding.neocities.org/img/stamps/tumblr_inline_okvw83bYm51rv0j40_500.gif">
+            <img src="https://hoarding.neocities.org/img/stamps/tumblr_inline_phwh7uFtj61w0aona_500.gif">
+            <img src="https://hoarding.neocities.org/img/stamps/tumblr_92c7162cda390bdd95ca49316b42f344_891d3dcb_100.png">
+            <img src="https://hoarding.neocities.org/img/stamps/more/stamp98.gif">
+            <img src="https://hoarding.neocities.org/img/stamps/more/stamp74.png">
+            </center>
+        </marquee>
+        <br><br>
+    </div>
+    </div>
+</div>
+</body>
