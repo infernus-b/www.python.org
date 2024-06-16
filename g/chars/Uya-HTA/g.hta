@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>meow</title>
+<!-- Template by Nomi :) -->
+<!-- It's recommended to open it with Notepad++! -->
+<hta:application
+    id="oHTA"
+    border="thick"
+    borderStyle="normal"
+    caption="yes"
+    contextMenu="no"
+    icon=".ico"
+    innerBorder="yes"
+    maximizeButton="no"
+    minimizeButton="yes"
+    singleInstance="yes"
+    version="1.0"
+    navigable="no"
+    scroll="no"
+    scrollFlat="no"
+    selection="no"
+    showInTaskbar="yes"
+    sysMenu="yes"
+    windowState="normal"
+></hta:application>
+
+<!--
+    id:              The unique identifier for the HTA. This should not be changed.
+    border:          Specifies the border thickness of the window.                                                Possible values: thick, dialog, thin.
+    borderStyle:     Specifies the border style of the window.                                                    Possible values: normal, complex, raised, static, sunken.
+    caption:         Indicates whether the window displays a title bar or a caption.                              Possible values: yes, no.
+    contextMenu:     Specifies whether to display the context menu.                                               Possible values: yes, no.
+    icon:            Sets the icon for the HTA window. Provide the path to the icon file; you can even use executable files, like notepad.exe for example.
+    innerBorder:     Specifies whether to display an inner border.                                                Possible values: yes, no.
+    maximizeButton:  Indicates whether the window has a maximize button.                                          Possible values: yes, no.
+    minimizeButton:  Indicates whether the window has a minimize button.                                          Possible values: yes, no.
+    singleInstance:  Ensures only one instance of the HTA runs at a time. (Recommended)                           Possible values: yes, no.
+    version:         The version number of the application. (Nothing really changes...)
+    navigable:       Specifies whether the window can navigate to other web pages.                                Possible values: yes, no.
+    scroll:          Specifies whether scrollbars are displayed.                                                  Possible values: yes, no, auto.
+    scrollFlat:      Specifies whether scrollbars are flat-style.                                                 Possible values: yes, no.
+    selection:       Specifies whether the user can select text.                                                  Possible values: yes, no.
+    showInTaskbar:   Specifies whether the window is shown in the taskbar.                                        Possible values: yes, no.
+    sysMenu:         Specifies whether the window has a system menu.                                              Possible values: yes, no.
+    windowState:     Specifies the initial state of the window.                                                   Possible values: normal, maximize, minimize.
+-->
+	
+<!-- 	You can make your own CSS by putting the <style> tags, you can put it where you can, I for example put it before the scripts. 
+                        As a template, I have created a very simple CSS, but you can do it any way you like.                                -->
+	<style>
+        body 
+		{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+			cursor: url(https://cur.cursors-4u.net/anime/ani-11/ani1097.cur), auto !important;
+        }
+        .container {
+		
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 
+		{
+            color: #333;
+            text-align: center;
+        }
+        p 
+		{
+            color: #555;
+            line-height: 1.6;
+            font-size: 15px; 
+        }
+        button 
+		{
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #BD9FD5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover 
+		{
+            background-color: #AF7DD7;
+        }
+    </style>
+
+<!-- Here's the script part, in this case, I used VBS since you can also use PowerShell with it. (For WinAPI calls.) This is because HTA itself uses a kind of 'Internet Explorer'.
+     I am quite sure that other scripting languages can be used, but I have not tested them. Snyway...
+     My script consists of two main functions: ExecutePostman and StartMugen.
+	 The ExecutePostman function creates and runs a temporary PowerShell script to manipulate MUGEN's title and display errors with MessageBoxA
+	 and the StartMugen function starts the winmugen.exe application with specific arguments, I think that you know that well.                                                      -->
+
+<!-- PowerShell is a little strange in calling APIs, for example, FindWindowA only works if you search the window by title and not by classname, otherwise it always returns 0.
+     Also, although the code is correct, PowerShell will not work, so I decided to create a temporary file to make it work. But I think you can do better than me.
+	 If you are good at scripting, you can also obfuscate your script. I did not do this in this case since it is a template.
+	 
+	 "& vbCrLf" == \n                                                                                                                                                               -->
+	 
+<script language="VBScript">
+
+Sub ExecutePostman()
+
+    ' Let's declare and initialize our variables.
+    Dim objShell, objFSO, tempFile, imon86
+    Set objShell = CreateObject("WScript.Shell")
+    Set objFSO   = CreateObject("Scripting.FileSystemObject")
+
+    ' Let's create a temporary file.
+    tempFile     = objFSO.GetSpecialFolder(2).Path & "\tempScript.ps1"
+    Set psFile   = objFSO.CreateTextFile(tempFile, True)
+
+	                      ' Define necessary functions.
+						  
+		imon86 =          "$sigFindWindow = @"""                                                                                                            & vbCrLf
+		imon86 = imon86 & "[DllImport(""USER32.dll"", CharSet = CharSet.Unicode)]"                                                                          & vbCrLf
+		imon86 = imon86 & "public static extern IntPtr FindWindow(IntPtr sClassName, string sAppName);"                                                     & vbCrLf
+		imon86 = imon86 & """@"                                                                                                                             & vbCrLf & vbCrLf
+		imon86 = imon86 & "$sigSetWindowTextA = @"""                                                                                                        & vbCrLf
+		imon86 = imon86 & "[DllImport(""USER32.dll"", CharSet = CharSet.Ansi)]"                                                                             & vbCrLf
+		imon86 = imon86 & "public static extern bool SetWindowTextA(IntPtr hWnd, string lpString);"                                                         & vbCrLf
+		imon86 = imon86 & """@"                                                                                                                             & vbCrLf & vbCrLf
+		imon86 = imon86 & "$sigMessageBoxA = @"""                                                                                                           & vbCrLf
+		imon86 = imon86 & "[DllImport(""USER32.dll"", CharSet = CharSet.Ansi)]"                                                                             & vbCrLf
+		imon86 = imon86 & "public static extern int MessageBoxA(IntPtr hWnd, string lpText, string lpCaption, uint uType);"                                 & vbCrLf
+		imon86 = imon86 & """@"                                                                                                                             & vbCrLf & vbCrLf
+		
+		                  ' Add the functions to the WIN32 namespace.
+						  
+		imon86 = imon86 & "$fw = Add-Type -Namespace Win32 -Name Funcs -MemberDefinition $sigFindWindow, $sigSetWindowTextA, $sigMessageBoxA -PassThru"     & vbCrLf & vbCrLf
+		                  ' Constants for MessageBoxA
+		imon86 = imon86 & "$MB_OK = 0x00000000"                                                                                                             & vbCrLf
+		imon86 = imon86 & "$MB_ICONINFORMATION = 0x00000040"                                                                                                & vbCrLf & vbCrLf
+		
+		                  ' Sleep for 3 seconds. (Let's wait for MUGEN to execute)
+						  
+	    imon86 = imon86 & "Start-Sleep -Seconds 3"                                                                                                          & vbCrLf & vbCrLf
+		
+			              ' Find MUGEN's window by using the title, PowerShell returns always 0 if you use the classname, for some reason.
+						  
+        imon86 = imon86 & "$wname = 'M.U.G.E.N'"	                                                                                                        & vbCrLf & vbCrLf
+        imon86 = imon86 & "try {"	        	                                                                                                            & vbCrLf
+		imon86 = imon86 & "    $hWndMUGEN = $fw::FindWindow([IntPtr]::Zero, $wname)"                                                                        & vbCrLf
+		imon86 = imon86 & "    if ($hWndMUGEN -eq [IntPtr]::Zero) {"                                                                                        & vbCrLf
+		imon86 = imon86 & "       [void]$fw::MessageBoxA([IntPtr]::Zero, ""Window not found."", ""Error"", $MB_OK + $MB_ICONINFORMATION)"                   & vbCrLf
+		imon86 = imon86 & "       return"        	                                                                                                        & vbCrLf
+		imon86 = imon86 & "    }"                	                                                                                                        & vbCrLf
+		imon86 = imon86 & "} catch {"           	                                                                                                        & vbCrLf
+		imon86 = imon86 & "    [void]$fw::MessageBoxA([IntPtr]::Zero, ""Error finding the window: $_"", ""Error"", $MB_OK + $MB_ICONINFORMATION)"           & vbCrLf
+		imon86 = imon86 & "    return"          	                                                                                                        & vbCrLf
+		imon86 = imon86 & "}"                   	                                                                                                        & vbCrLf & vbCrLf
+		
+		                  ' Change MUGEN's window title.
+						  
+		imon86 = imon86 & "$mugenTitle = ""Postman - .hta Version Test!"""                                                                                  & vbCrLf
+        imon86 = imon86 & "try {"	        	                                                                                                            & vbCrLf
+		imon86 = imon86 & "    $result = $fw::SetWindowTextA($hWndMUGEN, $mugenTitle)"                                                                      & vbCrLf
+		imon86 = imon86 & "    if (-not $result) {"	        	                                                                                            & vbCrLf
+		imon86 = imon86 & "        [void]$fw::MessageBoxA([IntPtr]::Zero, ""Unable to change the window title."", ""Error"", $MB_OK + $MB_ICONINFORMATION)" & vbCrLf
+		imon86 = imon86 & "        return"          	                                                                                                    & vbCrLf
+		imon86 = imon86 & "    }"                   	                                                                                                    & vbCrLf
+		imon86 = imon86 & "} catch {"           	                                                                                                        & vbCrLf
+		imon86 = imon86 & "    [void]$fw::MessageBoxA([IntPtr]::Zero, ""Error changing the window title: $_"", ""Error"", $MB_OK + $MB_ICONINFORMATION)"    & vbCrLf
+		imon86 = imon86 & "    return"          	                                                                                                        & vbCrLf
+		imon86 = imon86 & "}"                                                                                                                               & vbCrLf & vbCrLf
+		                  
+    ' Write the PowerShell script in the temporary file.
+    psFile.Write imon86
+    psFile.Close
+
+    ' Run the PowerShell script, invisibly and asynchronously.
+    objShell.Run "powershell.exe -ExecutionPolicy Bypass -File """ & tempFile & """", 0, False
+
+    ' Let's execute MUGEN now by calling the StartMugen function, while the PowerShell script is doing its work in the background.
+    StartMugen()
+
+    ' Delete the temporary file.
+    objFSO.DeleteFile(tempFile)
+	  
+End Sub
+
+Sub StartMugen()
+
+    ' Let's define MUGEN's command with PowerShell, with its arguments.
+	' In cmd, it's like this:
+	' cd ..
+	' cd ..
+	' winmugen.exe Uya-HTA Uya-HTA/Uya-Dummy.def -p1.life 1000 -p2.life -2 -rounds 2
+	
+	' Define psMUGEN, ready to put our command.
+    Dim psMUGEN
+    psMUGEN = "cd $PSScriptRoot; cd ..; cd ..; Start-Process -FilePath "".\winmugen.exe"" -ArgumentList 'Uya-HTA', 'Uya-HTA/Uya-Dummy.def', '-p1.life', '1000', '-p2.life', '-2', '-rounds', '2' -NoNewWindow"
+
+    ' Run the PowerShell script to execute winmugen.exe with its arguments.
+    Dim objShell
+    Set objShell = CreateObject("WScript.Shell")
+	
+	' Run winmugen.exe visibly and synchronously, so that the PowerShell script to change MUGEN's window title is not removed immediately, but only when MUGEN is closed.
+    objShell.Run "powershell.exe -ExecutionPolicy Bypass -Command """ & psMUGEN & """", 0, True
+	
+End Sub
+	
+</script>
+	
+<!-- This is the 'graphic' part, if we can call it that, of your Postman character. Here, you can create your own interface, using HTML, whichever way you like. 
+                            You can put fields to put the character and enemy's names, like the classic Postman. Obviously knowing HTML. 
+	                                     You can do it directly automatically if you want, but I used a button in this case.
+                                                As always, I have created a very simple interface to simplify things.                                            -->
+
+<body>
+    <div class="container">
+        <h1>press it</h1>
+        <button onclick="ExecutePostman()">lol</button>
+        <div>
+        </div>
+		<embed src="https://drive.google.com/uc?export=download&id=1hS6GPqQ3ltgKi61zg8RYcofe7mHXGvNO" autostart="true" hidden="true" type="audio/mpeg">
+    </div>
+</body>
+</html> <!-- Watch out for tags! -->
