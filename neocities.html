@@ -259,46 +259,6 @@ transform: translate(-100%, 0);
 }
 </style>
 <body>
-      <!-- draggable music thing ----------------------------------------------------------------------------------------->
-	
-<div id='musicplayer'>
-<div id='musicpixel'>
-<img src='https://pythons.site/neocities/meow.gif'>
-<div class='overlay'>
-<div class='playpause'><i class="fas fa-play"></i></div>
-</div>
-</div>
-<div id='musictitle'>
-<span class='marquee'>Nothing better than a good glass of wine, well, except some men. haha #Yep #ImGay</span>
-</div>
-</div>
-<audio id='musicsrc' loop src='https://files.catbox.moe/jl6bay.mp3'></audio>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script>
-document.querySelector('.playpause').addEventListener('click', playpause);
-
-function playpause(){
-if(document.querySelector('.playpause').innerHTML == '<i class="fas fa-play"></i>'){
-document.querySelector('#musicsrc').play();
-document.querySelector('.playpause').innerHTML = '<i class="fas fa-pause"></i>';
-} else{
-document.querySelector('#musicsrc').pause();
-document.querySelector('.playpause').innerHTML = '<i class="fas fa-play"></i>';
-}
-
-}
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-<script>
-$( function() {
-$( "#musicplayer" ).draggable();
-} );
-</script>
-
-<!---------------------------------------------------------------------------------------------------------------->
-	
 	<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
     <div id="cont">
         <div id="float"><h1>py
@@ -387,6 +347,45 @@ $( "#musicplayer" ).draggable();
     <div id="float"><a href="https://pythons.site"><h1>back
        </h1></div>
 </div>
+	<!-- draggable music thing ----------------------------------------------------------------------------------------->
+	
+<div id='musicplayer'>
+<div id='musicpixel'>
+<img src='https://pythons.site/neocities/meow.gif'>
+<div class='overlay'>
+<div class='playpause'><i class="fas fa-play"></i></div>
+</div>
+</div>
+<div id='musictitle'>
+<span class='marquee'>Nothing better than a good glass of wine, well, except some men. haha #Yep #ImGay</span>
+</div>
+</div>
+<audio id='musicsrc' loop src='https://files.catbox.moe/jl6bay.mp3'></audio>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+document.querySelector('.playpause').addEventListener('click', playpause);
+
+function playpause(){
+if(document.querySelector('.playpause').innerHTML == '<i class="fas fa-play"></i>'){
+document.querySelector('#musicsrc').play();
+document.querySelector('.playpause').innerHTML = '<i class="fas fa-pause"></i>';
+} else{
+document.querySelector('#musicsrc').pause();
+document.querySelector('.playpause').innerHTML = '<i class="fas fa-play"></i>';
+}
+
+}
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+$( function() {
+$( "#musicplayer" ).draggable();
+} );
+</script>
+
+<!---------------------------------------------------------------------------------------------------------------->
 <script>
 new cursoreffects.clockCursor();
 </script>
