@@ -164,101 +164,9 @@ a:hover{
     100%   { transform: translate(0, -0px); }    
 }
 
-
-
-	
-	
-@font-face {
-font-family: handy;
-src: url(https://dl.dropbox.com/s/ga9hf4idu3egjb5/handy00.ttf);
-}
-
-img:hover {
-cursor:help;
-}
-
-#musicplayer{
-display:grid;
-grid-template-columns:20px auto;
-align-items:center;
-width: 90px;
-font-family:handy;
-font-size:11px;
-color:#FF78BC;
-line-height:140%;
-border: 1px solid #FFB3DE;
-border-radius: 3px;
-background:white;
-
-}
-
-#musictitle{
-font-family:handy;
-overflow: hidden;
-white-space: nowrap;
-display:inline-block;
-width: calc(100% - 10px - 1px);
-margin-left: calc(10px + 1px);
-}
-
-#musicpixel{
-width:120%;
-paddin-top:0px;
-position:relative;
-min-height: 15px;
-background:white;
-border-right: 1px solid #FFB3DE;
-}
-
-.overlay {
-opacity:0;
-position:absolute;
-top:0;
-left:0;
-text-align:center;
-width:100%;
-height:100%;
-transition:0.3s ease;
-
-background: white;
-}
-
-#musicplayer:hover .overlay {
-opacity: 1;
-transition:0.3s ease;
-}
-
-.playpause{
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-40%, -50%);
-}
-
-.playpause:hover{
-cursor:help;
-}
-
-#musicpixel img{
-display:block;
-}
-
-.marquee{
-display: inline-block;
-padding-left: 100%;
-animation: marquee 5s linear infinite;
-}
-
-@keyframes marquee{
-0% {
-transform: translate(0, 0);
-}
-100% {
-transform: translate(-100%, 0);
-}
-}
 </style>
 <body>
+<audio autoplay="" loop="" src="neocities/Yumi Rose - Lum インベーダー.mp3"></audio>
 	<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
     <div id="cont">
         <div id="float"><h1>py
@@ -347,45 +255,6 @@ transform: translate(-100%, 0);
     <div id="float"><a href="https://pythons.site"><h1>back
        </h1></div>
 </div>
-	<!-- draggable music thing ----------------------------------------------------------------------------------------->
-	
-<div id='musicplayer'>
-<div id='musicpixel'>
-<img src='https://pythons.site/neocities/meow.gif'>
-<div class='overlay'>
-<div class='playpause'><i class="fas fa-play"></i></div>
-</div>
-</div>
-<div id='musictitle'>
-<span class='marquee'>Nothing better than a good glass of wine, well, except some men. haha #Yep #ImGay</span>
-</div>
-</div>
-<audio id='musicsrc' loop src='https://files.catbox.moe/jl6bay.mp3'></audio>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script>
-document.querySelector('.playpause').addEventListener('click', playpause);
-
-function playpause(){
-if(document.querySelector('.playpause').innerHTML == '<i class="fas fa-play"></i>'){
-document.querySelector('#musicsrc').play();
-document.querySelector('.playpause').innerHTML = '<i class="fas fa-pause"></i>';
-} else{
-document.querySelector('#musicsrc').pause();
-document.querySelector('.playpause').innerHTML = '<i class="fas fa-play"></i>';
-}
-
-}
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-<script>
-$( function() {
-$( "#musicplayer" ).draggable();
-} );
-</script>
-
-<!---------------------------------------------------------------------------------------------------------------->
 <script>
 new cursoreffects.clockCursor();
 </script>
