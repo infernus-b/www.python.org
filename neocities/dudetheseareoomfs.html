@@ -1,146 +1,171 @@
 <style>
-body{
-    margin: 0 auto;
-    font-family: ms gothic, monospace;
-    text-align: center;
-    background-image: url('https://files.catbox.moe/wpys0v.jpg');
-    text-align: center;
-}
+	body {
+		margin: 0 auto;
+		font-family: ms gothic, monospace;
+		text-align: center;
+		background-image: url("https://files.catbox.moe/wpys0v.jpg");
+		text-align: center;
+	}
 
-.container {  display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0px 15px;
-  grid-auto-flow: row;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  grid-template-areas:
-    "side1 middle side-2"
-    "side1 middle side-2"
-    "side1 middle side-2";
-}
+	.container {
+		display: grid;
+		grid-template-columns: 1fr 5fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		gap: 0px 15px;
+		grid-auto-flow: row;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+		grid-template-areas:
+			"side1 middle side-2"
+			"side1 middle side-2"
+			"side1 middle side-2";
+	}
 
-.side1 { 
-    grid-area: side1;
-    background:white;
-    border: 3px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-    min-height: 65vh;
+	.side1 {
+		grid-area: side1;
+		background: white;
+		border: 3px solid;
+		border-image-slice: 1;
+		border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+		min-height: 65vh;
+	}
 
- }
+	.middle {
+		grid-area: middle;
+		background: white;
+		border: 3px solid;
+		border-image-slice: 1;
+		border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+		min-height: 65vh;
+	}
 
-.middle { 
-    grid-area: middle;
-    background:white;
-    border: 3px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-    min-height: 65vh;
+	.side-2 {
+		grid-area: side-2;
+		background: white;
+		border: 3px solid;
+		border-image-slice: 1;
+		border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+		min-height: 65vh;
+	}
 
- }
+	#cont {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%);
+		max-height: 20%;
+	}
 
-.side-2 { 
-    grid-area: side-2; 
-    background:white;
-    border: 3px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-    min-height: 65vh;
+	h3 {
+		background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		padding: 0px 50px 0px 50px;
+	}
 
-}
+	ul {
+		list-style-type: none;
+		display: block;
+		margin: 0;
+		padding: 5px 5px 5px 5px;
+	}
 
-#cont {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    max-height: 20%;
-}
+	hr {
+		border-top: 3px double red;
+	}
 
-h3 {
-    background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 0px 50px 0px 50px;
-}
+	#hover a {
+		display: inline-block;
+		transition: 0.2s ease;
+	}
 
-ul {
-    list-style-type: none;
-    display: block;
-    margin: 0;
-    padding:5px 5px 5px 5px;
-}
+	#hover a:hover {
+		transform: translateY(-20%);
+	}
 
-hr{
-    border-top: 3px double red;
-}
+	a {
+		color: red;
+	}
 
-#hover a { 
-    display: inline-block; 
-    transition: .2s ease; 
-} 
+	a:hover {
+		color: rgb(25, 0, 255);
+	}
 
-#hover a:hover { 
-    transform: translateY(-20%); 
-} 
+	.Marquee {
+		padding: 15px;
+		max-width: 100%;
+	}
 
-a{
-    color:red;
-}
+	#float {
+		text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000, 0 0;
+		font-size: 2em;
+		font-weight: bold;
+		color: #fff;
+		animation-name: floating;
+		animation-duration: 3s;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease-in-out;
+	}
 
-a:hover{
-    color:rgb(25, 0, 255);
-}
-
-.Marquee {
-    padding: 15px;
-    max-width: 100%
-}
-
-#float {
-    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000, 0 0;
-    font-size:2em;
-    font-weight:bold; 
-    color: #fff;
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-}
-
-@keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }    
-}
-
+	@keyframes floating {
+		0% {
+			transform: translate(0, 0px);
+		}
+		50% {
+			transform: translate(0, 15px);
+		}
+		100% {
+			transform: translate(0, -0px);
+		}
+	}
 </style>
 <body>
-  <a href="https://pythons.site/secret"><img src="https://images.cooltext.com/5700787.gif" width="720" height="90" alt="fucking cool friends" /></a>
-  <hr>
-  <a href="https://x.com/6_grey_9"><img src="https://images.cooltext.com/5700788.png" width="615" height="110" alt="the grey dude" /></a>
-  <a href="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/vs4k0zh7.jpeg"><img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/3u30ul3a.png">
-  <br>
-  (tell your bf to ublock me i was just too silly :pray:)
-  <hr>
-  <a href="https://x.com/gooberbdoober"><img src="https://images.cooltext.com/5700789.png" width="1065" height="76" alt="goober the doober who boobs" /></a>
-  <img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/8l8lo51w.png">
-  <hr>
-  <a href="https://x.com/Sigma_penis"><img src="https://images.cooltext.com/5700790.png" width="374" height="91" alt="do re mi" /></a>
-  <img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/08adz9x3.png">
-  <hr>
-  <a href="https://x.com/pipelinepxnch"><img src="https://images.cooltext.com/5700793.png" width="1892" height="105" alt="monster drink pipeline punch" /></a>
-  <a href="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/5uc0qecr.png"><img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/n2g8qj3z.png">
-  <br>
-  <a href="https://x.com/cybercrimecat"><img src="https://images.cooltext.com/5700853.png" width="717" height="85" alt="AND HIS ILLEGAL CAT " /></a>
-  <img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/6fpsfwto.png">
-  <hr>
-  <a href="https://x.com/catgirlpuke"><img src="https://images.cooltext.com/5700794.gif" width="813" height="125" alt="this gal loves yuri" /></a>
-  <img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/5xb0o7f0.png">
-  <hr>
-  <a href="https://x.com/v1Mero"><img src="https://images.cooltext.com/5700873.png" width="359" height="107" alt="haiiii mero" /></a>
-  <img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/hiyzx4m6.png">
-  <hr>
-  <a href="https://x.com/sonthoi1809"><img src="https://images.cooltext.com/5701024.png" width="647" height="109" alt="Sont The Hedgehog" /></a>
-  <img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/vf911grr.jpeg">
+	<a href="/secret"
+		><img src="https://images.cooltext.com/5700787.gif" width="720" height="90" alt="fucking cool friends"
+	/></a>
+	<hr />
+	<a href="https://x.com/6_grey_9"
+		><img src="https://images.cooltext.com/5700788.png" width="615" height="110" alt="the grey dude"
+	/></a>
+	<a href="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/vs4k0zh7.jpeg"
+		><img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/3u30ul3a.png" />
+		<br />
+		(tell your bf to ublock me i was just too silly :pray:)
+		<hr />
+		<a href="https://x.com/gooberbdoober"
+			><img src="https://images.cooltext.com/5700789.png" width="1065" height="76" alt="goober the doober who boobs"
+		/></a>
+		<img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/8l8lo51w.png" />
+		<hr />
+		<a href="https://x.com/Sigma_penis"
+			><img src="https://images.cooltext.com/5700790.png" width="374" height="91" alt="do re mi"
+		/></a>
+		<img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/08adz9x3.png" />
+		<hr />
+		<a href="https://x.com/pipelinepxnch"
+			><img src="https://images.cooltext.com/5700793.png" width="1892" height="105" alt="monster drink pipeline punch"
+		/></a>
+		<a href="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/5uc0qecr.png"
+			><img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/n2g8qj3z.png" />
+			<br />
+			<a href="https://x.com/cybercrimecat"
+				><img src="https://images.cooltext.com/5700853.png" width="717" height="85" alt="AND HIS ILLEGAL CAT "
+			/></a>
+			<img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/6fpsfwto.png" />
+			<hr />
+			<a href="https://x.com/catgirlpuke"
+				><img src="https://images.cooltext.com/5700794.gif" width="813" height="125" alt="this gal loves yuri"
+			/></a>
+			<img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/5xb0o7f0.png" />
+			<hr />
+			<a href="https://x.com/v1Mero"
+				><img src="https://images.cooltext.com/5700873.png" width="359" height="107" alt="haiiii mero"
+			/></a>
+			<img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/hiyzx4m6.png" />
+			<hr />
+			<a href="https://x.com/sonthoi1809"
+				><img src="https://images.cooltext.com/5701024.png" width="647" height="109" alt="Sont The Hedgehog"
+			/></a>
+			<img src="https://r2.e-z.host/b717bd57-6495-46fa-81f9-e12d7c0be1fe/vf911grr.jpeg" /> </a
+	></a>
+</body>
