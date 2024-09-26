@@ -11,6 +11,13 @@ jobs:
         with:
           ref: main    #checkout different branch
 
+      - name: Build webXash
+        run: |
+          cd webXash
+          npm i
+          git submodule update --init
+          npm run build
+
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
