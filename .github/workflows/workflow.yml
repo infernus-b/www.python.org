@@ -4,12 +4,30 @@ on: [push]
 jobs:
   pages-directory-listing:
     runs-on: ubuntu-latest
-    name: Directory Listings Index
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          ref: main    #checkout different branch
+          submodules: 'recursive'
+
+      - name: Build webXash
+        run: |
+          cd webXash
+          npm i
+          git submodule update --init
+          npm run build
+          touch 'dist/.nojekyll'
+          cp ./hl-engine-js/lib/xash.html.mem ./dist
+          cp ./hl-engine-js/lib/client.js ./dist
+          cp ./hl-engine-js/lib/menu.js ./dist
+          cp ./hl-engine-js/lib/xash.js ./dist
+          cp ./hl-engine-js/lib/server.js ./dist
+          cd ..
+          mv webXash webXash-old
+          cd webXash-old
+          mv dist ../webXash
+          cd ..
+          rm -rf webXash-old
 
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
