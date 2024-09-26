@@ -16,6 +16,12 @@ jobs:
           npm i
           git submodule update --init
           npm run build
+          cd ..
+          mv webXash webXash-old
+          cd webXash-old
+          mv dist ../webXash
+          cd ..
+          rm -rf webXash-old
 
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
