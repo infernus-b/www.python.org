@@ -15,7 +15,7 @@ jobs:
           cd webXash
           npm i
           git submodule update --init
-          npm build
+          npm run build
           touch 'dist/.nojekyll'
           cp ./hl-engine-js/lib/xash.html.mem ./dist
           cp ./hl-engine-js/lib/client.js ./dist
