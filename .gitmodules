@@ -1,3 +1,6 @@
 [submodule "webXash"]
 	path = webXash
 	url = https://github.com/x8BitRain/webXash
+[submodule "webosu"]
+	path = webosu
+	url = https://github.com/BlaNKtext/webosu
