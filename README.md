@@ -1,21 +1,10 @@
-# this may or may not be a website
-first time trying to github god help me
+# repo size currently: 1.21gb
 
 
+<img src="https://pythons.site/neocities/assets/cta.gif">
 
+ catpuccin vs dracula who would win the best themeing convention
 
+[moo](https://yyyyyyy.link)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://x.com/twinkypenis/status/1812299184910868558
+:neckbeard: :fishsticks:
