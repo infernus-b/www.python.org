@@ -217,7 +217,20 @@ a {cursor:url("assets/cursor2.gif"), default;}
 </style>
 
 <body>
-	<audio autoplay="" loop="" src="/neocities/assets/why did i enter the art course (fuluca flip) - fuluca.mp3"></audio>
+<button onclick="playAudio()" type="button">play</button>
+<button onclick="pauseAudio()" type="button">hold up!</button>
+	<audio id="YOLO!" autoplay="" loop="" src="/neocities/assets/why did i enter the art course (fuluca flip) - fuluca.mp3"></audio>
+  <script>
+var x = document.getElementById("YOLO!"); 
+
+function playAudio() { 
+  x.play(); 
+} 
+
+function pauseAudio() { 
+  x.pause(); 
+} 
+</script>
 	<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 	<div id="cont">
 		<div id="float"><h1>py</h1></div>
@@ -284,6 +297,7 @@ a {cursor:url("assets/cursor2.gif"), default;}
 								<i>fancy text</i>
 								<embed src="/neocities/swf/kito.swf" type="application/x-shockwave-flash" />
 								<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+                                                               
 							</td>
 						</tr>
 					</tbody>
@@ -318,6 +332,13 @@ a {cursor:url("assets/cursor2.gif"), default;}
 				</marquee>
 			</div>
 		</div>
+                <iframe
+                  width="1024"
+                  height="768"
+                  src="https://pythons.site/webosu"
+                  >
+      
+                 </iframe>
 		<div id="float">
 			<a href="/"
 				><h1>back</h1>
