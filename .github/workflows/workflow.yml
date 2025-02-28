@@ -29,11 +29,15 @@ jobs:
           cd ..
           rm -rf webXash-old
 
-            - name: Github Pages Directory Listing
+                       - name: Generate Directory Listing Action
+  uses: yKicchan/generate-directory-listing-action@v1.1.0
+  with:
+    # Path to target directory.
+    target: .
+    # View type of the directory listing.
+Available options: list
 
-  uses: jayanta525/github-pages-directory-listing@v4.0.0
-   with:
-    FOLDER: '.'
+          
           
           
           
