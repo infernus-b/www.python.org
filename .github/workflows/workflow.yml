@@ -29,10 +29,12 @@ jobs:
           cd ..
           rm -rf webXash-old
 
-                              - name: Directory Listing for Github Page
-                                uses: rajibdpi/directory-listing-for-github-page@v4.0.2
-                                with:
-                                  FOLDER: .
+            - name: Github Pages Directory Listing
+
+  uses: jayanta525/github-pages-directory-listing@v4.0.0
+  with:
+    FOLDER: '.'
+          
           
           
 
