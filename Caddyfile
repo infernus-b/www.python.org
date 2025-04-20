@@ -1,0 +1,13 @@
+localhost {
+    root * .
+
+    encode zstd gzip
+    handle /astrophotography* {
+        file_server {
+            browse ./astrophotography/template.html
+            hide ./template.html
+        }
+    }
+
+    file_server
+}

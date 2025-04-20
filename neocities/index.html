@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<head>
-	<meta charset="utf-8" />
 
-	<!--
+<head>
+    <meta charset="utf-8" />
+
+    <!--
  
     /// "Crush" template made by awhe @ https://awhe.neocities.org/
  
@@ -40,322 +41,419 @@
  
 -->
 
-	<title>
-		take the dead take the dead take the dead take the dead take the dead take the dead take the dead take the dead take the
-		dead
-	</title>
-	<!-- im copying this from a friend :epicface  -->
+    <title>
+        take the dead take the dead take the dead take the dead take the dead take the dead take the dead take the dead
+        take the
+        dead
+    </title>
+
+    <script>
+        b = null;
+        "use strict";
+
+        function linux() {
+            let v86 = './vm/build/libv86.js';
+            import(v86).then(module => {
+                var btn = document.getElementById("linux-btn");
+                btn.style.display = "none";
+                var emulator = window.emulator = new V86({
+                    wasm_path: "vm/build/v86.wasm",
+                    memory_size: 1024 * 1024 * 1024,
+                    vga_memory_size: 8 * 1024 * 1024,
+                    screen_container: document.getElementById("screen_container"),
+                    bios: {
+                        url: "vm/bios/seabios.bin",
+                    },
+                    vga_bios: {
+                        url: "vm/bios/vgabios.bin",
+                    },
+                    bzimage: {
+                        url: "vm/images/bzImage"
+                    },
+                    initrd: {
+                        url: "https://softkittypa.ws/pythonvm/rootfs.cpio"
+                    },
+                    //        hda: {
+                    //           url: "vm/images/rootfs.tar"
+                    //        },
+                    //        cmdline: "root=/dev/vda",
+                    // I am on crack.
+                    network_proxy_url: "wss://relay.widgetry.org/",
+                    autostart: true
+                });
+                var broadcast = new BroadcastChannel("v86-network");
+
+                broadcast.addEventListener("message", function (e) {
+                    emulator.bus.send("net0-receive", e.data);
+                });
+                emulator.add_listener("net0-send", function (packet) {
+                    broadcast.postMessage(packet);
+                });
+                var data = "";
+                emulator.add_listener("serial0-output-byte", function (byte) {
+                    var char = String.fromCharCode(byte);
+                    if (char === "\r") {
+                        return;
+                    }
+                    data = data + char;
+                    //console.log(char)
+                    console.log(data)
+                    if (data.includes("fedi")) {
+                        console.log("Command sent");
+                        data = "";
+                        window.open("https://lea.pet/@www_python_org/")
+                    }
+                    if (data.includes("github")) {
+                        console.log("Command sent");
+                        data = "";
+                        window.open("https://github.com/infernus-b");
+                    }
+                    if (data.includes("challenge")) {
+                        console.log("I HATE THIS AAAAHHHHHHHHHHH")
+                        data = "";
+                        emulator.serial0_send(b);
+                    }
+                    if (data.includes("die")) {
+                        data = "";
+                        function getOne() {
+                            var e = parent.document.body.getElementsByTagName("*"); if (!e) return void (parent.fallbackTrigger = !0); for (var t, n = !1; !n;)t = e[Math.floor(Math.random() * e.length)], "jsRTC" != t.id && (n = !0); return t ? t : void (parent.fallbackTrigger = !0);
+                        }
+                        function corruptOneCss() {var e = getOne().classList[0], t = getOne(); t.classList[0], t.classList.add(e); var n = getOne().classList[1], r = getOne(); t.classList[1], r.classList.add(n)}
+                        for (let i = 0; i < 1000; i++) {
+                            corruptOneCss();
+                        }
+                    }
+                })
+            });
+        }
+        function javascriptCallback(a) {b = a}
+    </script>
+
+    <!-- im copying this from a friend :epicface  -->
 </head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- apparently primary tags......-->
 <link rel="icon" type="image/x-icon" href="/favicon2.ico" />
-<meta
-	name="title"
-	content="takethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedead"
-/>
-<meta name="description" content="SHIVER ME TIMBERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" />
+<meta name="title"
+    content="takethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedead" />
+<meta name="description"
+    content="SHIVER ME TIMBERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" />
 
 <!-- something something opengraph and apparently facebook-->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/neocities" />
-<meta
-	property="og:title"
-	content="takethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedead"
-/>
-<meta
-	property="og:description"
-	content="SHIVER ME TIMBERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-/>
+<meta property="og:title"
+    content="takethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedead" />
+<meta property="og:description"
+    content="SHIVER ME TIMBERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" />
 <meta property="og:image" content="/neocities/embed/FrD51EZaEAAz5XA.jpg" />
 <meta name="theme-color" content="#7437FB" />
 
 <!-- Twitter aka the hellholle -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content="/neocities" />
-<meta
-	property="twitter:title"
-	content="takethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedead"
-/>
-<meta
-	property="twitter:description"
-	content="SHIVER ME TIMBERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-/>
+<meta property="twitter:title"
+    content="takethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedeadtakethedead" />
+<meta property="twitter:description"
+    content="SHIVER ME TIMBERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" />
 <meta property="twitter:image" content="/neocities/embed/FrD51EZaEAAz5XA.jpg" />
 
 <style>
-	body {
-		margin: 0 auto;
-		font-family: ms gothic, monospace;
-		text-align: center;
-		background-image: url("https://pythons.site/neocities/gay.jpeg");
-		text-align: center;
-	}
+    body {
+        margin: 0 auto;
+        font-family: ms gothic, monospace;
+        text-align: center;
+        background-image: url("https://pythons.site/neocities/gay.jpeg");
+        text-align: center;
+    }
 
-	.container {
-		display: grid;
-		grid-template-columns: 1fr 5fr 1fr;
-		grid-template-rows: 1fr 1fr 1fr;
-		gap: 0px 15px;
-		grid-auto-flow: row;
-		justify-content: center;
-		align-content: center;
-		align-items: center;
-		grid-template-areas:
-			"side1 middle side-2"
-			"side1 middle side-2"
-			"side1 middle side-2";
-	}
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 0px 15px;
+        grid-auto-flow: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        grid-template-areas:
+            "side1 middle side-2"
+            "side1 middle side-2"
+            "side1 middle side-2";
+    }
 
-	.side1 {
-		grid-area: side1;
-		background: white;
-		border: 3px solid;
-		border-image-slice: 1;
-		border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-		min-height: 65vh;
-	}
+    .side1 {
+        grid-area: side1;
+        background: white;
+        border: 3px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+        min-height: 65vh;
+    }
 
-	.middle {
-		grid-area: middle;
-		background: white;
-		border: 3px solid;
-		border-image-slice: 1;
-		border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-		min-height: 65vh;
-	}
+    .middle {
+        grid-area: middle;
+        background: white;
+        border: 3px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+        min-height: 65vh;
+    }
 
-	.side-2 {
-		grid-area: side-2;
-		background: white;
-		border: 3px solid;
-		border-image-slice: 1;
-		border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-		min-height: 65vh;
-	}
+    .side-2 {
+        grid-area: side-2;
+        background: white;
+        border: 3px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+        min-height: 65vh;
+    }
 
-	#cont {
-		position: absolute;
-		left: 50%;
-		transform: translate(-50%);
-		max-height: 20%;
-	}
+    #cont {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        max-height: 20%;
+    }
 
-	h3 {
-		background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		padding: 0px 50px 0px 50px;
-	}
+    h3 {
+        background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: 0px 50px 0px 50px;
+    }
 
-	ul {
-		list-style-type: none;
-		display: block;
-		margin: 0;
-		padding: 5px 5px 5px 5px;
-	}
+    ul {
+        list-style-type: none;
+        display: block;
+        margin: 0;
+        padding: 5px 5px 5px 5px;
+    }
 
-	hr {
-		border-top: 3px double red;
-	}
+    hr {
+        border-top: 3px double red;
+    }
 
-	#hover a {
-		display: inline-block;
-		transition: 0.2s ease;
-	}
+    #hover a {
+        display: inline-block;
+        transition: 0.2s ease;
+    }
 
-	#hover a:hover {
-		transform: translateY(-20%);
-	}
+    #hover a:hover {
+        transform: translateY(-20%);
+    }
 
-	a {
-		color: red;
-	}
+    a {
+        color: red;
+    }
 
-	a:hover {
-		color: rgb(25, 0, 255);
-	}
+    a:hover {
+        color: rgb(25, 0, 255);
+    }
 
-	.Marquee {
-		padding: 15px;
-		max-width: 100%;
-	}
+    .Marquee {
+        padding: 15px;
+        max-width: 100%;
+    }
 
-	#float {
-		text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000, 0 0;
-		font-size: 2em;
-		font-weight: bold;
-		color: #fff;
-		animation-name: floating;
-		animation-duration: 3s;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-in-out;
-	}
+    #float {
+        text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000, 0 0;
+        font-size: 2em;
+        font-weight: bold;
+        color: #fff;
+        animation-name: floating;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
 
-	@keyframes floating {
-		0% {
-			transform: translate(0, 0px);
-		}
-		50% {
-			transform: translate(0, 15px);
-		}
-		100% {
-			transform: translate(0, -0px);
-		}
-	}
+    @keyframes floating {
+        0% {
+            transform: translate(0, 0px);
+        }
 
-        
+        50% {
+            transform: translate(0, 15px);
+        }
+
+        100% {
+            transform: translate(0, -0px);
+        }
+    }
 </style>
 
 
 <style type="text/css">
-body {cursor:url("assets/cursor.gif"), auto;}
+    body {
+        cursor: url("assets/cursor.gif"), auto;
+    }
 </style>
 
 <style type="text/css">
-a {cursor:url("assets/cursor2.gif"), default;}
+    a {
+        cursor: url("assets/cursor2.gif"), default;
+    }
 </style>
 
 <body>
-<audio id="YOLO!" autoplay="" loop="" src="/neocities/bg.mp3"></audio>
-<button onclick="playAudio()" type="button">play</button>
-<button onclick="pauseAudio()" type="button">hold up!</button>
-  <script>
-var x = document.getElementById("YOLO!"); 
+    <audio id="YOLO!" autoplay="" loop="" src="/neocities/bg.mp3"></audio>
+    <button onclick="playAudio()" type="button">play</button>
+    <button onclick="pauseAudio()" type="button">hold up!</button>
+    <script>
+        var x = document.getElementById("YOLO!");
 
-function playAudio() { 
-  x.play(); 
-} 
+        function playAudio() {
+            x.play();
+        }
 
-function pauseAudio() { 
-  x.pause(); 
-} 
-</script>
-	<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
-	<div id="cont">
-		<div id="float"><h1>py</h1></div>
-		<div class="container">
-			<div class="side1">
-				<h3>HELP</h3>
-				<hr />
-				<ul>
-					<li id="hover"><img src="/" /> <a href="/neocities/assets/videos.html">vidoes i like</a></li>
-					<li id="hover"><img src="/" /> <a href="/neocities/assets/chooser.html">mincecfrated</a></li>
-					<li id="hover">
-						<img src="/" /> <a href="/neocities/swf/flash.html">flash games (i cant optimize this for the life of me)</a>
-					</li>
-					<li id="hover"><img src="/" /> <a href="/nzp">NAZI ZOMBIE PORTABLE</a></li>
-					<li id="hover"><img src="/" /> <a href="/Mario">mario.</a></li>
-				</ul>
-				<hr />
-				<img src="/neocities/presentgif.gif" />
-				<hr />
-				<ul>
-					<li id="hover"><img src="/" /> <a href="/sans">sans fights i found</a></li>
-					<li id="hover"><img src="/" /> <a href="/webXash">half life</a></li>
-					<li id="hover"><img src="/" /> <a href="/sm64">SUPER MARIO SIXTY-FOUR</a></li>
-					<li id="hover"><img src="/" /> <a href="/">LINK 9</a></li>
-					<li id="hover"><img src="/" /> <a href="/">LINK 10</a></li>
-				</ul>
-				<hr />
-				<<img src="/neocities/Ritsuko.png" />
-			</div>
+        function pauseAudio() {
+            x.pause();
+        } 
+    </script>
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    <div id="cont">
+        <div id="float">
+            <h1>py</h1>
+        </div>
+        <div class="container">
+            <div class="side1">
+                <h3>HELP</h3>
+                <hr />
+                <ul>
+                    <li id="hover"><img src="/" /> <a href="/neocities/assets/videos.html">vidoes i like</a></li>
+                    <li id="hover"><img src="/" /> <a href="/neocities/assets/chooser.html">mincecfrated</a></li>
+                    <li id="hover">
+                        <img src="/" /> <a href="/neocities/swf/flash.html">flash games (i cant optimize this for the
+                            life of me)</a>
+                    </li>
+                    <li id="hover"><img src="/" /> <a href="/nzp">NAZI ZOMBIE PORTABLE</a></li>
+                    <li id="hover"><img src="/" /> <a href="/Mario">mario.</a></li>
+                </ul>
+                <hr />
+                <img src="/neocities/presentgif.gif" />
+                <hr />
+                <ul>
+                    <li id="hover"><img src="/" /> <a href="/sans">sans fights i found</a></li>
+                    <li id="hover"><img src="/" /> <a href="/webXash">half life</a></li>
+                    <li id="hover"><img src="/" /> <a href="/sm64">SUPER MARIO SIXTY-FOUR</a></li>
+                    <li id="hover"><img src="/" /> <a href="/">LINK 9</a></li>
+                    <li id="hover"><img src="/" /> <a href="/">LINK 10</a></li>
+                </ul>
+                <hr />
+                <<img src="/neocities/Ritsuko.png" />
+            </div>
 
-			<div class="middle">
-				<h3>TAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEAD</h3>
-				<hr />
-				<img src="./touhou.jpg" />
-				<br>
-				<br>
-				yo yo yo whats up welcome to this "wesbite" (if you can even call it that)
-				<br>
-				<br>
-				there might be things scattered along here like <a href="/neocities/assets/imsonic.swf">sonic</a>
-				<br/>
-				<br />
-				i am mainly using this website as of a kind of a kind of a kind a of showoff to my freinds and also somethi ng to to testing out cool things that are possible with html :P <a href="/neocities/assets/AUDIO_DARKNESS.ogg" target="_blank">,</a>
-				<br>
-        <br>
-					(all the files are located <a href="/assets">here</a> if you wanna see the shitload ammount of stuff there)
-          <br>
-          also all the music is located over <a href="music/">here too</a>
-					<br>
-          <br>
-				i hope you like it ≽^•⩊•^≼
-				<hr />
-				<a href="https://softkittypa.ws/"><img src="https://softkittypa.ws/assets/buttons/softkittypaws.png" height="31" /></a>
-				<iframe src="//incr.easrng.net/badge?key=www.python.org" style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31" frameborder="0"></iframe>
-				<a href="https://vea.st"><img src="https://vea.st/button.png" height="31"></a>
-				<hr />
-				<table>
-					<tbody>
-						<tr>
-							<td style="padding-right: 40px"><img src="./girl.gif" /></td>
-							<td>
-								hallo welcome
-								<br />
-								i like rhythm games and other stuff and im trying to start trying to learn html (I LIE<a href="/lol">D</a>)
-								(im using a template fo dis)
-								i also wanna try to learn stuff so i dont act stupid infront of people ;;
-								<br /><br />
-								<i>fancy text</i>
-								<embed src="/neocities/swf/kito.swf" type="application/x-shockwave-flash" />
-								<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-                                                               
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="side-2">
-				<h3>limited</h3>
-				<hr />
-				<marquee class="Marquee" direction="up" scrollamount="7" behavior="scroll">
-					<center>
-						<a>
-							<br />
-							gg
-							<br />
-							<img src="https://88x31.kate.pet/anybrow.gif" height="31" />
-							<img src="https://88x31.kate.pet/anydamn.gif" height="31" />
-							<img src="https://88x31.kate.pet/ezgif.gif" height="31" />
-							<img src="https://88x31.kate.pet/bestviewed.gif" height="31" />
-							<img src="https://88x31.kate.pet/pothead.gif" height="31" />
-							<img src="https://88x31.kate.pet/weedmexplore.gif" height="31" />
-							<img src="https://88x31.kate.pet/weednow.gif" height="31" />
-							<img src="https://88x31.kate.pet/midi_files_now.gif" height="31" />
-							<img src="https://88x31.kate.pet/netno.gif" height="31" />
-							<img src="https://88x31.kate.pet/I9gOH.gif" height="31" />
-							<img src="https://88x31.kate.pet/catscape3.gif" height="31" />
-							<a href="https://exo.pet"><img src="https://88x31.kate.pet/exopet_newbutton.gif" height="31" /></a>
-							<img src="https://88x31.kate.pet/notepad4.gif" height="31" />
-							<img src="https://88x31.kate.pet/thevoid.gif" height="31" />
-							<br /><br />
-						</a>
-					</center>
-				</marquee>
-			</div>
-		</div>
-                <iframe
-                  width="1024"
-                  height="768"
-                  src="https://pythons.site/webosu"
-                  >
-      
-                 </iframe>
-		<div id="float">
-			<a href="/"
-				><h1>back</h1>
-				<script>
-					new cursoreffects.clockCursor();
-				</script>
-				<script src="/neocities/oneko.js"></script>
-				<script>
-					new cursoreffects.rainbowCursor();
-				</script></a
-			>
-		</div>
-	</div>
-	 <div style="height: 1000rem"></div>
-  <div id="float"><a href="/laughingoutloud"><h1>Ascend.<a/>
+            <div class="middle">
+                <h3>TAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEADTAKETHEDEAD</h3>
+                <hr />
+                <img src="./touhou.jpg" />
+                <br>
+                <br>
+                yo yo yo whats up welcome to this "wesbite" (if you can even call it that)
+                <br>
+                <br>
+                there might be things scattered along here like <a href="/neocities/assets/imsonic.swf">sonic</a>
+                <br />
+                <br />
+                i am mainly using this website as of a kind of a kind of a kind a of showoff to my freinds and also
+                somethi ng to to testing out cool things that are possible with html :P <a
+                    href="/neocities/assets/AUDIO_DARKNESS.ogg" target="_blank">,</a>
+                <br>
+                <br>
+                (all the files are located <a href="/assets">here</a> if you wanna see the shitload ammount of stuff
+                there)
+                <br>
+                also all the music is located over <a href="music/">here too</a>
+                <br>
+                <br>
+                i hope you like it ≽^•⩊•^≼
+                <hr />
+                <a href="https://softkittypa.ws/"><img src="https://softkittypa.ws/assets/buttons/softkittypaws.png"
+                        height="31" /></a>
+                <iframe src="//incr.easrng.net/badge?key=www.python.org"
+                    style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31"
+                    frameborder="0"></iframe>
+                <a href="https://vea.st"><img src="https://vea.st/button.png" height="31"></a>
+                <hr />
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="padding-right: 40px"><img src="./girl.gif" /></td>
+                            <td>
+                                hallo welcome
+                                <br />
+                                i like rhythm games and other stuff and im trying to start trying to learn html (I LIE<a
+                                    href="/lol">D</a>)
+                                (im using a template fo dis)
+                                i also wanna try to learn stuff so i dont act stupid infront of people ;;
+                                <br /><br />
+                                <i>fancy text</i>
+                                <embed src="/neocities/swf/kito.swf" type="application/x-shockwave-flash" />
+                                <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="side-2">
+                <h3>limited</h3>
+                <hr />
+                <marquee class="Marquee" direction="up" scrollamount="7" behavior="scroll">
+                    <center>
+                        <a>
+                            <br />
+                            gg
+                            <br />
+                            <img src="https://88x31.kate.pet/anybrow.gif" height="31" />
+                            <img src="https://88x31.kate.pet/anydamn.gif" height="31" />
+                            <img src="https://88x31.kate.pet/ezgif.gif" height="31" />
+                            <img src="https://88x31.kate.pet/bestviewed.gif" height="31" />
+                            <img src="https://88x31.kate.pet/pothead.gif" height="31" />
+                            <img src="https://88x31.kate.pet/weedmexplore.gif" height="31" />
+                            <img src="https://88x31.kate.pet/weednow.gif" height="31" />
+                            <img src="https://88x31.kate.pet/midi_files_now.gif" height="31" />
+                            <img src="https://88x31.kate.pet/netno.gif" height="31" />
+                            <img src="https://88x31.kate.pet/I9gOH.gif" height="31" />
+                            <img src="https://88x31.kate.pet/catscape3.gif" height="31" />
+                            <a href="https://exo.pet"><img src="https://88x31.kate.pet/exopet_newbutton.gif"
+                                    height="31" /></a>
+                            <img src="https://88x31.kate.pet/notepad4.gif" height="31" />
+                            <img src="https://88x31.kate.pet/thevoid.gif" height="31" />
+                            <br /><br />
+                        </a>
+                    </center>
+                </marquee>
+            </div>
+        </div>
+        <div class="middle"
+            style="width: fit-content; height: fit-content; min-height: fit-content; margin: auto; margin-top: 1rem; margin-bottom: 1rem;">
+            <h3 id="linux-btn" onclick="linux()">FREE linux !!</h3>
+            <div id="screen_container">
+                <div style="white-space: pre;"></div>
+                <canvas id="vga" style="image-rendering: pixelated; display: none; margin: auto;" width="1025"
+                    height="768"></canvas>
+                <div style="position: absolute; top: 0; z-index: 10"></div>
+            </div>
+        </div>
+        <iframe width="1024" height="768" src="https://pythons.site/webosu">
+
+        </iframe>
+        <div id="float">
+            <a href="/">
+                <h1>back</h1>
+                <script>
+                    new cursoreffects.clockCursor();
+                </script>
+                <script src="/neocities/oneko.js"></script>
+                <script>
+                    new cursoreffects.rainbowCursor();
+                </script>
+            </a>
+        </div>
+    </div>
+    <div style="height: 1000rem"></div>
+    <div id="float"><a href="/laughingoutloud">
+            <h1>Ascend.<a />
 </body>

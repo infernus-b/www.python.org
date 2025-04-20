@@ -1,4 +1,4 @@
-# repo size currently: 1.21gb
+# repo size currently: 663mb
 
 
 <img src="https://pythons.site/neocities/assets/cta.gif">

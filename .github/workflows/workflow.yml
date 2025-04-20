@@ -29,10 +29,18 @@ jobs:
           cd ..
           rm -rf webXash-old
 
-      - name: Generate Directory Listings
-        uses: jayanta525/github-pages-directory-listing@v4.0.0
-        with:
-          FOLDER: .      #directory to generate index
+                       - name: Generate Directory Listing Action
+  uses: yKicchan/generate-directory-listing-action@v1.1.0
+  with:
+    # Path to target directory.
+    target: .
+    # View type of the directory listing.
+Available options: list
+
+          
+          
+          
+          
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
