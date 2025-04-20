@@ -4,3 +4,6 @@
 [submodule "webosu"]
 	path = webosu
 	url = https://github.com/BlaNKtext/webosu
+[submodule "srb2"]
+	path = srb2
+	url = https://github.com/chromaticpipe/SRB2-WASM
