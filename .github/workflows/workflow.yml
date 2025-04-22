@@ -2,16 +2,20 @@ name: directory-listing
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
-  pages-directory-listing:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+     
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
           submodules: 'recursive'
 
+      
       - name: Build webXash
         run: |
           cd webXash
@@ -28,31 +32,14 @@ jobs:
           mkdir game
           cp -r webXash/dist game
 
-      - name: Generate Directory Listing Action
-        uses: yKicchan/generate-directory-listing-action@v1.1.0
-        with:
-          target: .
-          view: list
-
-      - name: Upload Pages Artifact
+      
+      - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: game/dist
 
-  deploy:
-    needs: pages-directory-listing
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-    steps:
+      
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
         with:
           artifact_name: github-pages
