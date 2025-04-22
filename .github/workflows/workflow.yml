@@ -34,14 +34,14 @@ jobs:
           target: .
           view: list
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact (correct action)
+        uses: actions/upload-artifact@v3
         with:
-          path: game/dist
           name: github-pages
+          path: game/dist
 
       - name: Debug - List files in game folder
-        run: ls -l game   # Debug
+        run: ls -l game # debug
 
   deploy:
     needs: pages-directory-listing
@@ -58,3 +58,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        with:
+          artifact_name: github-pages
