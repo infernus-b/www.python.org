@@ -1,4 +1,4 @@
-name: dir
+name: wo
 
 on:
   push:
@@ -13,29 +13,25 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install and Build webXash
-        run: |
-          cd webXash
-          npm install
-          git submodule update --init
-          npm run build
-          touch dist/.nojekyll
-          cp ./hl-engine-js/lib/*.js ./dist
-          cp ./hl-engine-js/lib/xash.html.mem ./dist
-          cd ..
+      - name: depends
+        run: npm install
+        working-directory: webXash
 
-      - name: Upload GitHub Pages artifact
+      - name: build
+        run: npm run build
+        working-directory: webXash
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: webXash/dist
@@ -47,6 +43,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
