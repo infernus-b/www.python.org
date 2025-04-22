@@ -40,6 +40,9 @@ jobs:
           path: game/dist
           name: github-pages
 
+      - name: Debug - List files in game folder
+        run: ls -l game   # Debug
+
   deploy:
     needs: pages-directory-listing
     permissions:
@@ -52,6 +55,11 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact
+        uses: actions/download-pages-artifact@v3
+        with:
+          name: github-pages
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
