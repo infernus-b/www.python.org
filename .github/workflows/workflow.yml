@@ -1,4 +1,4 @@
-name: directory-listing
+name: dir
 
 on:
   push:
@@ -6,41 +6,50 @@ on:
       - main
 
 permissions:
-  id-token: write
+  contents: read
   pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          submodules: 'recursive'
+          submodules: recursive
 
-      - name: Build webXash
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install and Build webXash
         run: |
           cd webXash
-          npm i
+          npm install
           git submodule update --init
           npm run build
-          touch 'dist/.nojekyll'
+          touch dist/.nojekyll
+          cp ./hl-engine-js/lib/*.js ./dist
           cp ./hl-engine-js/lib/xash.html.mem ./dist
-          cp ./hl-engine-js/lib/client.js ./dist
-          cp ./hl-engine-js/lib/menu.js ./dist
-          cp ./hl-engine-js/lib/xash.js ./dist
-          cp ./hl-engine-js/lib/server.js ./dist
           cd ..
-          mkdir -p game
-          cp -r webXash/dist game
 
-      - name: Upload artifact for GitHub Pages
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: game/dist
+          path: webXash/dist
           name: github-pages
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
         with:
           artifact_name: github-pages
