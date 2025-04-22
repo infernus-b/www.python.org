@@ -25,11 +25,8 @@ jobs:
           cp ./hl-engine-js/lib/xash.js ./dist
           cp ./hl-engine-js/lib/server.js ./dist
           cd ..
-          mv webXash webXash-old
-          cd webXash-old
-          mv dist ../webXash
-          cd ..
-          rm -rf webXash-old
+          mkdir game
+          cp -r webXash/dist game
 
       - name: Generate Directory Listing Action
         uses: yKicchan/generate-directory-listing-action@v1.1.0
@@ -40,7 +37,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: webXash/dist
+          path: game/dist
 
   deploy:
     needs: pages-directory-listing
