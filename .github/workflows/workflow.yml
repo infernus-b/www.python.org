@@ -38,6 +38,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: game/dist
+          name: github-pages
 
   deploy:
     needs: pages-directory-listing
