@@ -36,10 +36,10 @@ jobs:
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4.2.0
         with:
-          target_branch: gh-pages     # Branch to deploy to
-          build_dir: .                # Directory to deploy
-          keep_history: true          # Preserve commit history
-          allow_empty_commit: false   # Avoid empty commits
-          jekyll: false               # Disable Jekyll for raw file serving
+              target_branch: gh-pages
+              build_dir: .
+              keep_history: true
+              allow_empty_commit: false
+              jekyll: false
         env:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
