@@ -41,4 +41,5 @@ jobs:
           keep_history: true          # Preserve commit history
           allow_empty_commit: false   # Avoid empty commits
           jekyll: false               # Disable Jekyll for raw file serving
+        env:
           token: ${{ secrets.GITHUB_TOKEN }}
