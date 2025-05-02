@@ -1,59 +1,39 @@
 name: directory-listing
- 
- on:
-   push:
- 
- jobs:
-   pages-directory-listing:
-     runs-on: ubuntu-latest
-     steps:
-       - name: Checkout Repository
-         uses: actions/checkout@v3
-         with:
-           submodules: 'recursive'
- 
-       - name: Build webXash
-         run: |
-           cd webXash
-           npm i
-           git submodule update --init
-           npm run build
-           touch 'dist/.nojekyll'
-           cp ./hl-engine-js/lib/xash.html.mem ./dist
-           cp ./hl-engine-js/lib/client.js ./dist
-           cp ./hl-engine-js/lib/menu.js ./dist
-           cp ./hl-engine-js/lib/xash.js ./dist
-           cp ./hl-engine-js/lib/server.js ./dist
-           cd ..
-           mkdir game
-           cp -r webXash/dist game
- 
-       - name: Generate Directory Listing Action
-         uses: yKicchan/generate-directory-listing-action@v1.1.0
-         with:
-           target: .
-           view: list
- 
-       - name: Upload artifact for Pages
-       - name: Upload Pages Artifact
-         uses: actions/upload-pages-artifact@v3
-         with:
-           path: game/dist
- 
-   deploy:
-     needs: pages-directory-listing
-     permissions:
-       pages: write
-       id-token: write
- 
-     environment:
-       name: github-pages
-       url: ${{ steps.deployment.outputs.page_url }}
- 
-     runs-on: ubuntu-latest
-     steps:
-       - name: Deploy to GitHub Pages
-         id: deployment
-         uses: actions/deploy-pages@v2
-         with:
-           artifact_name: github-pages
+on: [push]
+
+jobs:
+  pages-directory-listing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+          
+      - name: Generate Directory Listings
+        uses: jayanta525/github-pages-directory-listing@v4.0.0
+        with:
+          FOLDER: .      #directory to generate index
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'      # upload generated folder
+  
+  deploy:
+    needs: pages-directory-listing
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
