@@ -1,48 +1,47 @@
 name: directory-listing
 
-on:
-  push:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+on: [push]
 
 jobs:
-  generate:
+  pages-directory-listing:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
-      - name: Generate directory listing
+      - name: Generate Directory Listing Action
         uses: yKicchan/generate-directory-listing-action@v1.1.0
         with:
+    # Path to target directory.
           target: .
           viewType: 'list'
-
+          
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
-          path: .  
-  deploy:
-    needs: generate
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: github-pages
-          path: public
+          path: .  # Upload the generated folder
 
-      - name: Deploy to GitHub Pages
+  deploy:
+    needs: pages-directory-listing
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write       # To deploy to GitHub Pages
+      id-token: write    # To verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4.2.0
         with:
-          target_branch: gh-pages
-          build_dir: public
-          keep_history: true
-          allow_empty_commit: false
-          jekyll: false
+              target_branch: gh-pages
+              build_dir: .
+              keep_history: true
+              allow_empty_commit: false
+              jekyll: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
