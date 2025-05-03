@@ -1,6 +1,7 @@
 name: directory-listing
 
-on: [push]
+on:
+  push:
 
 jobs:
   pages-directory-listing:
@@ -11,37 +12,42 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Generate Directory Listing Action
+      - name: Generate Directory Listing
         uses: yKicchan/generate-directory-listing-action@v1.1.0
         with:
-    # Path to target directory.
-          target: .
+          target: ./
           viewType: 'list'
-          
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # Upload the generated folder
+          path: . 
 
   deploy:
     needs: pages-directory-listing
     runs-on: ubuntu-latest
     permissions:
-      pages: write       # To deploy to GitHub Pages
-      id-token: write    # To verify the deployment originates from an appropriate source
+      pages: write
+      id-token: write
 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: GitHub Pages
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+          path: public
+
+      - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4.2.0
         with:
-              target_branch: gh-pages
-              build_dir: .
-              keep_history: true
-              allow_empty_commit: false
-              jekyll: false
+          target_branch: gh-pages
+          build_dir: public
+          keep_history: true
+          allow_empty_commit: false
+          jekyll: false
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
