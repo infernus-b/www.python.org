@@ -11,11 +11,12 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Directory Listing
-        uses: gacts/directory-listing@v1.0.1
+      - name: Generate Directory Listing Action
+        uses: yKicchan/generate-directory-listing-action@v1.1.0
         with:
-              # Path to the target directory
+    # Path to target directory.
           target: .
+          viewType: 'list'
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
