@@ -11,11 +11,12 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Generate Directory Listings
-        uses: jayanta525/github-pages-directory-listing@v4.0.0
+      - name: Directory Listing
+        uses: gacts/directory-listing@v1.0.1
         with:
-          FOLDER: .  # Directory to generate index
-
+              # Path to the target directory
+          target: .
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
