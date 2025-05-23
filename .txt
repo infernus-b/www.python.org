@@ -1,0 +1,17 @@
+<style>
+body {
+  background-color: black;
+  margin: 0 auto;
+}
+p {
+  text-align: center;
+}
+</style>
+<html>
+<body>
+<p style="color:white">
+Upon further consideration this website is ass. Thank you for your service.
+<img
+</p>
+</body>
+</html>
