@@ -3,6 +3,7 @@ body {
   background-color: black;
   margin: 0 auto;
   font-family: ms gothic, monospace;
+  align-content: center
 }
 p {
   text-align: center;
@@ -15,9 +16,36 @@ img {
 </style>
 <html>
 <body>
+<audio id="hi!" autoplay="" loop="" src="/neocities/music/IM CRYING FOR HELP WHY WONT ANYONE SAVE ME IM CRYING FOR HELP WHY WONT ANYONE SAVE ME IM CRYING FOR HELP WHY WONT ANYONE SAVE ME IM CRYING FOR HELP WHY WONT ANYONE SAVE ME.opus"></audio>
 <p style="color:white">
-Upon further consideration this website is ass. Thank you for your service.
-<img src="/neocities/assets/nnyan.gif"
+Upon further thought, first impressions matter :P, i have decided to change this to what it is now as the old one.... kinda SUCked! Scroll down and visit the page im currently working on the most, thank you for your service ^_^
 </p>
+<br>
+<p style="color:grey">
+this also has some music aswell, please enable autoplay and refresh the page maybe.
+</p>
+<img src="/neocities/assets/nnyan.gif">
+<div style="height: 500rem"></div>
+<a href="/i.html" style="color:grey">og</a>
+<div style="height: 500rem"></div>
+<a href="/neocities" style="color:grey">https://cdn.discordapp.com/attachments/1292722995348897876/1296592381985947730/vcredist_x86.exe?ex=6832e901&is=68319781&hm=4a4882c6cdddf43e6f206c377c6cec1202aab9900b606e8fc2e0b41279a9a545&</a>
 </body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("hi!");
+ 
+  audio.volume = 1.0;
+
+  window.addEventListener("scroll", () => {
+    
+    const scrollTop = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollTop / maxScroll;
+    const newVolume = Math.max(0, 1 - scrollPercent);
+
+    audio.volume = newVolume;
+  });
+});
+</script>
+
 </html>
