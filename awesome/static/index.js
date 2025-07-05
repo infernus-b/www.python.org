@@ -57,29 +57,29 @@ const SEARCHES = [
 ]
 
 const VIDEOS = [
-  '/static/0fff2d366bb5d456c4498eb2d19b14ce.mp4',
-  '/static/44b8634f718067accead50cbaf25b2f8.mp4',
-  '/static/533cb2a66a486e30f43109e053998993.mp4',
-  '/static/5e71514c91d41817ed66d985e8999b4a.mp4',
-  '/static/82c38fb78ac739b486bd35b6e6a3f601.mp4',
-  '/static/Vqq11zpEIG-n9UN2.mp4',
-  '/static/lv_0_20240713172302.mp4',
-  '/static/lv_0_20240813204521.mp4',
-  '/static/youtube_AALQwjjk85Y_720x720_h264.mp4',
-  '/static/trolol.mp4',
-  '/static/nyan.mp4'
+  'static/0fff2d366bb5d456c4498eb2d19b14ce.mp4',
+  'static/44b8634f718067accead50cbaf25b2f8.mp4',
+  'static/533cb2a66a486e30f43109e053998993.mp4',
+  'static/5e71514c91d41817ed66d985e8999b4a.mp4',
+  'static/82c38fb78ac739b486bd35b6e6a3f601.mp4',
+  'static/Vqq11zpEIG-n9UN2.mp4',
+  'static/lv_0_20240713172302.mp4',
+  'static/lv_0_20240813204521.mp4',
+  'static/youtube_AALQwjjk85Y_720x720_h264.mp4',
+  'static/trolol.mp4',
+  'static/nyan.mp4'
 ]
 
 const FILE_DOWNLOADS = [
-  '/static/cudly.png',
-  '/static/Screenshot_20240724_142949_X.jpg',
-  '/static/nilespatkid.png',
-  '/static/cat-hover.jpg',
-  '/static/eadb627b413ad99481d47dbaeb59cdb96853b7fb5708c2a187b60ef25dc42bc6.png',
-  '/static/geometry-dash-lobotomy.gif',
-  '/static/sponge.gif',
-  '/static/spongebob_squid_game.jpg',
-  '/static/togif.gif'
+  'static/cudly.png',
+  'static/Screenshot_20240724_142949_X.jpg',
+  'static/nilespatkid.png',
+  'static/cat-hover.jpg',
+  'static/eadb627b413ad99481d47dbaeb59cdb96853b7fb5708c2a187b60ef25dc42bc6.png',
+  'static/geometry-dash-lobotomy.gif',
+  'static/sponge.gif',
+  'static/spongebob_squid_game.jpg',
+  'static/togif.gif'
 ]
 
 const PHRASES = [
